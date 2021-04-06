@@ -1,0 +1,222 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+    box-sizing: border-box;
+}
+
+
+ /* Variables.*/
+
+:root {
+    --main-contrast-color: #FFFFFF;
+    --inner-contrast-color: #000000;
+    --calculator-display-color: rgb(238, 232, 232);
+    --active-color: lightgray;
+    --next-contrast-color: rgb(181, 253, 255);
+}
+
+.dark-theme:root {
+    --main-contrast-color: #232324;
+    --inner-contrast-color: #FFFFFF;
+    --calculator-display-color: #3A3A3B;
+    --active-color: #474747;
+    --next-contrast-color: rgb(47, 48, 51);
+}
+
+body {
+    background-color: var(--main-contrast-color);
+}
+
+
+ /* Header styles.*/
+
+header {
+    padding: 8px 6px 8px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--inner-contrast-color);
+    height: 48px;
+}
+
+header > h1 {
+    font-size: 22px;
+    color: var(--inner-contrast-color);
+}
+
+header > .hamburguer-menu-opener {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    height: 20px;
+    width: 40px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+header > .hamburguer-menu-opener div {
+    background-color: var(--inner-contrast-color);
+    width: 25px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+
+ /* Navigation menu styles.*/
+
+header nav {
+    padding-top: 12px;
+    position: fixed;
+    width: 70%;
+    opacity: 0;
+    top: 0px;
+    bottom: 0px;
+    z-index: 999;
+    right: 0;
+    transform: translateX(100%);
+    background-color: var(--next-contrast-color);
+    transition: right 0.2s ease-in-out;
+    max-width: 300px;
+    overflow: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+nav > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+ /* Color theme components.*/
+
+nav .custom-theme-switcher {
+    display: flex;
+    align-items: center;
+}
+
+nav .custom-theme-switcher .far {
+    color: var(--inner-contrast-color);
+    font-size: 20px;
+    margin: 0px 8px 0px 8px;
+}
+
+nav .custom-theme-switcher .color-theme-switcher-checkbox {
+    display: none;
+}
+
+nav .custom-theme-switcher label {
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #CBCBCC;
+    border-radius: 20px;
+    padding: 2px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+nav .custom-theme-switcher label div {
+    width: 21px;
+    height: 21px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+nav .custom-theme-switcher .color-theme-switcher-checkbox:checked + label {
+    background-color: #6F7BFC;
+}
+
+nav .custom-theme-switcher .color-theme-switcher-checkbox:checked + label div {
+    transform: translateX(25px)
+}
+
+nav .color-theme-switcher-checkbox {
+    display: none;
+}
+
+nav .hamburguer-menu-closer {
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    border: none;
+    margin-left: 8px;
+    outline: none;
+    height: 20px;
+    width: 40px;
+    padding: 2px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0,0);
+}
+
+nav .hamburguer-menu-closer div {
+    position: absolute;
+    top: calc(50% - 1px);
+    background-color: var(--inner-contrast-color);
+    width: 25px;
+    height: 2px;
+    border-radius: 1px;
+    display: block
+}
+
+nav .hamburguer-menu-closer div:nth-child(1) {
+    transform: rotate(45deg)
+}
+
+nav .hamburguer-menu-closer div:nth-child(2) {
+    transform: rotate(-45deg)
+}
+
+header > nav > ul {
+    margin: 0 auto;
+}
+
+header > nav > ul > li {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 40px
+}
+
+header > nav > ul > li a {
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--inner-contrast-color);
+    -webkit-tap-highlight-color:  rgba(0, 0, 0, 0); 
+    border: 2px solid var(--inner-contrast-color);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    transition: all 0.2s ease;
+}
+
+header > nav > ul > li a:hover {
+    background-color: var(--active-color);
+}
+
+/* Hamburguer menu closer shortcut.*/
+.hamburguer-menu-closer-shortcut {
+    display: none;
+}
+
+ /* JavaScrpit classes.*/
+
+.active-hamburguer-menu {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.expand-menu-closer-shortcut {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    z-index: 5;
+}

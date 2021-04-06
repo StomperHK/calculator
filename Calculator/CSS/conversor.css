@@ -1,0 +1,301 @@
+@import "customSelect.css";
+
+
+ /*custom alert styles.*/
+
+.alert {
+    width: 70%;
+    max-width: 360px;
+    padding-top: 8px;
+    margin: 0 auto;
+    border: 2px solid lightgrey;
+    border-radius: 8px;
+    position: fixed;
+    background-color: var(--main-contrast-color);
+    color: var(--inner-contrast-color);
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+    transition: transform 0.550s ease-in-out;
+}
+
+.alert > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 8px 6px 8px;
+    border-bottom: 1px solid var(--inner-contrast-color);
+}
+
+.alert h2 {
+    font-size: 16px;
+}
+
+.alert .alert-closer {
+    display: block;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
+    height: 20px;
+    width: 20px;
+    position: relative;
+}
+
+.alert .alert-closer span {
+    position: absolute;
+    height: 2px;
+    transform: rotate(-45deg);
+    width: 70%;
+    background-color: var(--inner-contrast-color);
+    top: 9px;
+    left: 25%;
+}
+
+.alert .alert-closer:hover > span {
+    background-color: rgb(140, 140, 140);
+}
+
+.alert .alert-closer span:last-child {
+    transform: rotate(45deg);
+}
+
+.alert > p {
+    margin: 10px 0px;
+    padding: 0 8px;
+}
+
+
+ /*main content styles.*/
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3px;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+main > input {
+    text-indent: 5px;
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid var(--inner-contrast-color);
+    color: var(--inner-contrast-color);
+    background-color: var(--main-contrast-color);
+    transition: border 0.1s ease;
+}
+
+main > input:focus {
+    border: 2px solid #535DD1;
+}
+
+main > .conversion-result {
+    width: 80%;
+    padding-top: 5px;
+    margin-left: 20px;
+    justify-self: center;
+    border-bottom: 2px solid var(--inner-contrast-color);
+    color: var(--inner-contrast-color);
+    overflow: auto;
+    text-align: center; 
+}
+
+main > section {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+}
+
+main .fa-sync-alt {
+    display: block;
+    color: #535DD1;
+    font-size: 20px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 0px 16px;
+    -webkit-tap-highlight-color: rbga(0, 0, 0, 0);
+}
+
+main > section + div {
+    position: relative;
+    grid-column: span 2;
+    justify-self: center;
+}
+
+main .essential-currency-conversion {
+    padding-top: 14px;
+    color: var(--inner-contrast-color);
+    font-size: 14px;
+}
+
+main .currency-underline {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #535DD1;
+    transition: width 0.5s ease;
+}
+
+main .essential-currency-conversion span {
+    color: #535DD1;
+}
+
+
+ /*adtional infos styles.*/
+
+.addtional-infos {
+    margin: 0 auto 15px auto;
+    width: 80%;
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 18px;
+}
+
+.addtional-infos i {
+    color: var(--inner-contrast-color);
+    font-size: 18px;
+}
+
+.addtional-infos div, .addtional-infos article {
+    border: 2px solid var(--inner-contrast-color);
+    border-radius: 8px;
+    position: relative;
+    padding: 8px;
+    background-color: var(--next-color);
+}
+
+.addtional-infos h2 {
+    color: var(--inner-contrast-color);
+    font-size: 18px;
+    font-weight: 500;
+    display: inline-block
+}
+
+.addtional-infos h2::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 30%;
+    background-color: var(--inner-contrast-color);
+}
+
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.addtional-infos p {
+    margin-top: 6px;
+    color: var(--inner-contrast-color);
+}
+
+.addtional-infos .padding-margin {
+    margin-top: 10px;
+    padding-left: 1px;
+}
+
+.addtional-infos p span {
+    margin-left: 8px;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 2px 0px 0px rgb(45, 31, 167)
+}
+
+.addtional-infos > article {
+    grid-column: span 2;
+}
+
+.addtional-infos > article button {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    background-color: var(--next-color);
+    border: 2px solid var(--inner-contrast-color);
+    border-radius: 8px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.addtional-infos > article button:hover {
+    background-color: var(--next-contrast-color);
+}
+
+.addtional-infos > article a {
+    cursor: default;
+    text-decoration: none;
+    color: var(--inner-contrast-color);
+    font-weight: 500;
+}
+
+
+ /*custom select styles.*/
+
+.custom-select {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.custom-select > div:nth-child(1),
+.custom-select > div:nth-child(2),
+.custom-select > div:nth-child(2) > div {
+    border: 2px solid var(--inner-contrast-color);
+    color: var(--inner-contrast-color);
+    background-color: var(--main-contrast-color);
+}
+
+.custom-select > div:nth-child(2)::-webkit-scrollbar {
+    width: 10px;
+}
+
+.custom-select > div:nth-child(2)::-webkit-scrollbar-track {
+    background-color: var(--main-contrast-color);
+}
+
+.custom-select > div:nth-child(2)::-webkit-scrollbar-thumb {
+    background-color: rgb(160, 154, 154);
+}
+
+.custom-select > div:nth-child(2)::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(107, 103, 103);
+}
+
+.custom-select .custom-x-simbol div {
+    background-color: var(--inner-contrast-color)
+}
+
+.custom-select .filter-box {
+    background-color: var(--main-contrast-color);
+    border: none;
+    color: var(--inner-contrast-color);
+}
+
+.custom-select > div:nth-child(2) span:active {
+    background-color: var(--active-color)
+}
+
+.custom-select .filter-box::placeholder {
+    color: var(--inner-contrast-color);
+}
+
+
+ /*JavaScript classes.*/
+ 
+.active-custom-alert {
+    transform: translate(-50%, 25px);
+}
+
+.display-none {
+    display: none;
+}

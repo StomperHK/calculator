@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Calculadora</title>
+        <link href="../CSS/index.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="../CSS/conversor.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/3eadcae956.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="alert">
+            <div> 
+                <h2>Erro</h2> <button class='alert-closer'> <span></span> <span></span> </button>
+            </div>
+            <p data-js="error-description"></p>
+        </div>
+        
+        <header>
+            <h1>Conversor</h1>
+
+            <nav>
+                <div>
+                    <div class='custom-theme-switcher'>
+                        <i class="far fa-sun"></i>
+                        <input type="checkbox" id="check-switch" class='color-theme-switcher-checkbox'/>
+                        <label for="check-switch">
+                            <div></div>
+                        </label>
+                        <i class="far fa-moon"></i>
+                    </div>
+    
+                    <button class='hamburguer-menu-closer' data-js="hamburguer-menu-closer">
+                        <div></div>
+                        <div></div>
+                    </button>
+                </div>
+    
+                <ul>
+                    <li><a href="./conversor.html" target="_self">Conversor de moedas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hamburguer-menu-opener" data-js="hamburguer-menu-opener">
+                <div class="row"></div>
+                <div class="row"></div>
+                <div class="row"></div>
+            </div>
+        </header>
+        
+        <div data-js="hamburguer-menu-closer-shortcut" class='hamburguer-menu-closer-shortcut'>
+
+        </div>
+        
+        
+        <main>
+            <input type="text" inputmode="numeric" min="1" data-js="currency-input"/>
+        
+            <div class="conversion-result" data-js="currency-result">
+                
+            </div>
+            
+            <section>
+                <div class="custom-select first-select">
+                    <div> <span></span> <span class="chevron"><i class="fas fa-chevron-down"></i></span> </div>
+                    <div data-js="options-container" class="disable-option-container">
+                        <div> 
+                            <input type="text" class="filter-box" placeholder="search here"/> 
+                            <div class="custom-x-simbol">  <div></div> <div></div>  </div>
+                        </div>
+                    </div>
+                </div>
+
+                <i class="fas fa-sync-alt" data-js="fa-sync-alt"></i>
+                
+                <div class="custom-select second-select">
+                    <div> <span></span> <span class="chevron"><i class="fas fa-chevron-down"></i></span> </div>
+                    <div data-js="options-container" class="disable-option-container">
+                        <div> 
+                            <input type="text" class="filter-box" placeholder="search here"/> 
+                            <div class="custom-x-simbol">  <div></div> <div></div>  </div> 
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div>
+                <div class="essential-currency-conversion" data-js="essential-currency-conversion">
+                    
+                </div>
+                <span class='currency-underline' data-ja="currency-underline"></span>
+            </div>
+        </main>
+
+        <section class='addtional-infos'>
+            <div data-container="last-update" class='display-none'>
+                <h2>Última atualização</h2>
+                <i class="fas fa-history top-right"></i>
+                <p data-calendar='last-update' class='padding-margin'>
+                    <i class="far fa-calendar-alt"></i>
+                </p>
+                <p data-time='last-update'>
+                    <i class="far fa-clock"></i>
+                </p>
+            </div>
+
+            <div data-container='next-update' class='display-none'>
+                <h2>Próxima atualização</h2>
+                <i class='fas fa-arrow-right top-right'></i>
+                <p data-calendar='next-update' class='padding-margin'>
+                    <i class='far fa-calendar-alt'></i>
+                </p>
+                <p data-time='next-update'>
+                    <i class='far fa-clock'></i>
+                </p>
+            </div>
+
+            <article>
+                <h2>O que é taxa de câmbio?</h2>
+                <i class="far fa-newspaper top-right"></i>
+                <p>Taxa de câmbio é uma relação de valor calculado entre duas moedas diferentes, sendo que
+                    uma tenderá a valer mais do que a outra. Ela pode representar também como está uma 
+                    relação de troca entre 2 países.
+                </p>
+                <button class='know-more-button'>
+                    <a href='https://einvestidor.estadao.com.br/educacao-financeira/entenda-o-que-e-taxa-de-cambio-e-o-que-define-o-valor-do-dolar#:~:text=Em%20primeiro%20lugar%2C%20a%20taxa,moeda%20americana%20neste%20dado%20momento.' 
+                    rel="noreferrer noopener" target="_blank" hreflang="pt-br">
+                        SAIBA MAIS
+                    </a>
+                </button>
+            </article>
+        </section>
+        
+        
+        <script src="../JS/index.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../JS/conversor.js" type="module" charset="utf-8"></script>
+    </body>
+</html>

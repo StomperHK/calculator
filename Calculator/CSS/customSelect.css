@@ -1,0 +1,113 @@
+.custom-select {
+    width: 45%;
+    position: relative;
+}
+
+.custom-select > div:first-child {
+    padding: 3px 6px;
+    display: flex;
+    border: solid #000000;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.custom-select .chevron {
+    transition: transform 0.2s ease-in-out;
+}
+
+.custom-select > div:last-child {
+    border: solid #000000;
+    position: relative;
+    max-height: 110px;
+    margin-top: 2px;
+    border-radius: 5px;
+    position: absolute;
+    width: 100%;
+    overflow: auto;
+    z-index: 2;
+    transition: opacity 0.2s ease;
+}
+
+.custom-select .fa-chevron-down {
+    font-size: 14px;
+}
+
+.custom-select > div:last-child > div {
+    margin: 6px auto 4px auto;
+    width: 90%;
+    height: 26px;
+    border: solid black;
+    border-radius: 5px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 19px;
+    align-items: center;
+    justify-items: center;
+}
+
+.custom-select > div:last-child input {
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 2px;
+}
+
+.custom-select .custom-x-simbol {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.1s ease;
+}
+
+.custom-select .custom-x-simbol > div {
+    height: 1px;
+    width: 70%;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: rotate(45deg);
+}
+
+.custom-select .custom-x-simbol > div:last-child {
+    transform: rotate(-45deg)
+}
+
+
+
+.custom-select > div:last-child > span {
+    display: block;
+    height: 24px;
+    padding: 1px 0px 0px 8px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.custom-select > div:last-child > span:active {
+    background-color: #D9F1EA;
+}
+
+
+ /* JavaScript classes.*/
+
+.rotate-chevron {
+    transform: rotate(-180deg);
+}
+
+.disable-option-container {
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hide-input-reseter {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hide-option {
+    position: absolute;
+    left: -100%;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculadora</title>
+    <link href="../CSS/index.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../CSS/calculator.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&calculator-display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3eadcae956.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+        
+        <nav>
+            <div>
+                <div class='custom-theme-switcher'>
+                    <i class="far fa-sun"></i>
+                    <input type="checkbox" id="check-switch" class='color-theme-switcher-checkbox'/>
+                    <label for="check-switch">
+                        <div></div>
+                    </label>
+                    <i class="far fa-moon"></i>
+                </div>
+
+                <button class='hamburguer-menu-closer' data-js="hamburguer-menu-closer">
+                    <div></div>
+                    <div></div>
+                </button>
+            </div>
+
+            <ul>
+                <li><a href="./conversor.html" target="_self">Conversor de moedas</a></li>
+            </ul>
+
+            <div class="calculator-configurations">
+                <p>Quantidade máxima de casas decimais.</p>
+                <input data-js="max-decimal-places-quantity" type="text">
+            </div>
+        </nav>
+        
+        <div class="hamburguer-menu-opener" data-js="hamburguer-menu-opener">
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+        </div>
+    </header>
+
+    <div data-js="hamburguer-menu-closer-shortcut" class='hamburguer-menu-closer-shortcut'>
+
+    </div>
+    
+
+    <main>
+        <form data-js="calculator-form" class='calculator-form'>
+            <div class="calculator-inner-container total-calculator-display">
+                <p data-js="calculator-essential-expression"></p>
+                <input data-js="calculator-result-display" type="text" autofocus/>
+            </div>
+
+            <div data-js='container-of-displayable-values' class="calculator-inner-container calculator-simbols">
+                <div>+</div>
+                <div>-</div>
+                <div>÷</div>
+                <div>×</div>
+            </div>
+            
+            <div data-js='container-of-displayable-values' class="calculator-inner-container calculator-numbers">
+                <div>7</div>
+                <div>8</div>
+                <div>9</div>
+                <div>4</div>
+                <div>5</div>
+                <div>6</div>
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>,</div>
+                <div>0</div>
+                <button type="submit" class='border-right-removed'>=</button>
+            </div>
+                       
+            <div class="calculator-inner-container delete-actions-container">
+                <div data-js="display-content-reseter">C</div>
+
+                <div data-js="display-popper">
+                    <i class="fas fa-backspace"></i> 
+                </div>
+            </div>
+        </form>
+    </main>
+    
+
+    <script src="../JS/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../JS/calculator.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+ /* Calculator styles.*/
+
+.calculator-form {
+    width: 85%;
+    margin: 50px auto;
+    border-radius: 10px;
+    background-color: var(--main-contrast-color);
+    overflow: hidden;
+    border: 2px solid #909090;
+    max-width: 350px;
+}
+
+ /* Calculator Display styles.*/
+
+.total-calculator-display {
+    height: 70px;
+    background-color: var(--calculator-display-color);
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+}
+
+.total-calculator-display > p {
+    text-align: right;
+    overflow: auto;
+    font-size: 12px;
+    padding-right: 5px;
+    padding-top: 4px;
+    height: 35%;
+    color: var(--inner-contrast-color);
+}
+
+.total-calculator-display > input {
+    display: block;
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    outline: none;
+    border: none;
+    padding-right: 5px;
+    text-align: right;
+    background-color: inherit;
+    color: var(--inner-contrast-color);
+}
+
+ /* Calculator keys styles.*/
+
+.calculator-simbols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 40px;
+    color: var(--inner-contrast-color);
+}
+
+.calculator-inner-container > :is(div, button) {
+    background-color: var(--main-contrast-color);
+    color: var(--inner-contrast-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    font-weight: 400;
+    font-size: 20px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.calculator-simbols > div {
+    border: 1px solid #D6D6D6;
+}
+
+.calculator-simbols > div:nth-child(1) {
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-bottom: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+}
+
+.calculator-simbols > div:nth-child(4) {
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-bottom: 1px solid #D6D6D6;
+    border-left: 1px solid #D6D6D6;
+}
+
+.calculator-numbers,
+.delete-actions-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: var(--inner-contrast-color);
+    grid-auto-rows: 50px;
+}
+
+.calculator-numbers > div:last-child {
+    grid-column: 2;
+}
+
+.delete-actions-container > div:last-child i {
+    font-size: 22px;
+}
+
+.delete-actions-container > div:first-child {
+    background-color: #CB4A44;
+    grid-column: span 2;
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+}
+
+.delete-actions-container  > div:last-child {
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-left: 1px solid #D6D6D6;
+}
+
+
+ /* Calculator configurations styles.*/
+.calculator-configurations {
+    width:50%;
+    max-width: 200px;
+    border: 2px solid var(--inner-contrast-color);
+    margin: 0px auto;
+    border-radius: 8px;
+    background-color: var(--next-contrast-color);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-configurations > p {
+    color: var(--inner-contrast-color);
+    margin-bottom: 15px;
+}
+
+.calculator-configurations > p::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 30%;
+    background-color: var(--inner-contrast-color);
+}
+
+.calculator-configurations > input {
+    width: 70%;
+    border: 2px solid var(--inner-contrast-color);
+    background-color: var(--next-contrast-color);
+    color: var(--inner-contrast-color);
+    border-radius: 6px;
+    outline: none;
+    padding: 2px;
+    transition: border 0.1s ease;
+}
+
+.calculator-configurations > input:focus {
+    border: 2px solid #535DD1;
+}
+
+
+ /*JavaScript classes.*/
+.border-left-removed {
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-bottom: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+}
+
+.border-right-removed {
+    border: none;
+    border-top: 1px solid #D6D6D6;
+    border-bottom: 1px solid #D6D6D6;
+    border-left: 1px solid #D6D6D6;
+}
+
+.full-border {
+    border: none;
+    border: 1px solid #D6D6D6;
+}
