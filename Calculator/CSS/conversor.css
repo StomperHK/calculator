@@ -256,7 +256,7 @@ main .essential-currency-conversion span {
 }
 
 .custom-select > div:nth-child(2)::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
 }
 
 .custom-select > div:nth-child(2)::-webkit-scrollbar-track {

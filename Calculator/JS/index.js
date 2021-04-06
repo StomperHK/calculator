@@ -30,6 +30,7 @@
 
     hamburguerMenuCloserEL.addEventListener("click", () => {
         navigationBarEL.classList.remove('active-hamburguer-menu')
+        hamburguerMenuCloserShortcutEL.style.display = 'none'
     })
 
     themeSwitcherEL.addEventListener("click", () => {

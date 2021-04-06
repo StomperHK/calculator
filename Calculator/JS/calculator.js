@@ -74,8 +74,6 @@
     const handleButtonClick = event => {
         doFundamentalsVerifications()
 
-        calculatorResultDisplayEL.focus()
-
         const contentOfClickedButton = event.target.innerText
 
         let lastPositionOfCursor = calculatorResultDisplayEL.selectionStart
