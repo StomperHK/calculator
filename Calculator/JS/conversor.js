@@ -1,4 +1,4 @@
-import {CreateCustomSelect} from "./customSelect.js"
+import {CreateCustomSelect} from "./custom-select.js"
 import {returnAPIKey} from "./apikey.js"
 
 
@@ -35,7 +35,7 @@ import {returnAPIKey} from "./apikey.js"
         "not-available-on-plan": "Tipo de requisição não permitido neste plano."
     })[errorType] || "Os dados não poderam ser obtidos."
 
-      
+
     async function fetchExchangeRate(currency) {
         return fetch(getURL(currency))
         .then(response => {
@@ -156,39 +156,24 @@ import {returnAPIKey} from "./apikey.js"
 
     
     function handleInput() {
-        let keyboardValue = this.value
-
-        function removeRepeatedSymbol(symbol) {
-            return (keyboardValue
-            .slice(keyboardValue.indexOf(symbol)+1)        // Get the next repetition of the symbol.
-            .replace(/\./g, '')
-            .replace(/\,/g, ''))
-        }
-        
+        let keyboardValue = this.value.replace(/\./, ',')
+        const firstIndexOfComma = keyboardValue.indexOf(',')
         
         keyboardValue = keyboardValue.replace(/-/g, '')
         keyboardValue = keyboardValue.replace(/ /g, '')
         
-        if (keyboardValue[0] == ',' || keyboardValue[0] == '.') {
+        if (keyboardValue[0] == ',') {
             keyboardValue = '0' + keyboardValue
         }
         
-        if (keyboardValue.includes('.') && (
-            keyboardValue.includes('.', keyboardValue.indexOf('.')+1) ||
-            keyboardValue.includes(',', keyboardValue.indexOf('.')+1))) {
-                
-            keyboardValue = keyboardValue.slice(0, keyboardValue.indexOf('.')+1) +
-            removeRepeatedSymbol.call(this, '.')
-        }
-        
-        else if (keyboardValue.includes(',') && (
-                 keyboardValue.includes('.', keyboardValue.indexOf(',')+1) ||
-                 keyboardValue.includes(',', keyboardValue.indexOf(',')+1))) {
-            
-            keyboardValue = keyboardValue.slice(0, keyboardValue.indexOf(',') + 1) +
-            removeRepeatedSymbol.call(this, ',')
+        if ((keyboardValue.match(/\,/g) || '').length > 1) {
+            keyboardValue = [
+                keyboardValue.slice(0, firstIndexOfComma+1),
+                keyboardValue.slice(firstIndexOfComma).replace(/\,/g, '')
+            ].join('')
         }
 
+        this.value = keyboardValue
         updateConversionResult(false)
     }
     

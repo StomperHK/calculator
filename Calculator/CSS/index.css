@@ -6,22 +6,21 @@
 }
 
 
- /* Variables.*/
-
+ /*Variables.*/
 :root {
     --main-contrast-color: #FFFFFF;
+    --next-contrast-color: rgb(231, 255, 255);
     --inner-contrast-color: #000000;
     --calculator-display-color: rgb(238, 232, 232);
-    --active-color: lightgray;
-    --next-contrast-color: rgb(181, 253, 255);
+    --active-color: rgb(250, 240, 255);
 }
 
 .dark-theme:root {
     --main-contrast-color: #232324;
+    --next-contrast-color: rgb(47, 48, 51);
     --inner-contrast-color: #FFFFFF;
     --calculator-display-color: #3A3A3B;
     --active-color: #474747;
-    --next-contrast-color: rgb(47, 48, 51);
 }
 
 body {
@@ -29,8 +28,7 @@ body {
 }
 
 
- /* Header styles.*/
-
+ /*Header styles.*/
 header {
     padding: 8px 6px 8px 8px;
     display: flex;
@@ -65,12 +63,11 @@ header > .hamburguer-menu-opener div {
 }
 
 
- /* Navigation menu styles.*/
-
+ /*Navigation menu styles.*/
 header nav {
     padding-top: 12px;
     position: fixed;
-    width: 70%;
+    width: 60%;
     opacity: 0;
     top: 0px;
     bottom: 0px;
@@ -91,8 +88,7 @@ nav > div {
     margin-bottom: 30px;
 }
 
- /* Color theme components.*/
-
+ /*Color theme switcher styles.*/
 nav .custom-theme-switcher {
     display: flex;
     align-items: center;
@@ -183,29 +179,30 @@ header > nav > ul > li {
 
 header > nav > ul > li a {
     border-radius: 6px;
+    background-color: var(--next-contrast-color);
     text-decoration: none;
     padding: 8px;
     cursor: pointer;
+    outline: none;
     color: var(--inner-contrast-color);
     -webkit-tap-highlight-color:  rgba(0, 0, 0, 0); 
     border: 2px solid var(--inner-contrast-color);
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
-    transition: all 0.2s ease;
 }
 
 header > nav > ul > li a:hover {
     background-color: var(--active-color);
 }
 
-/* Hamburguer menu closer shortcut.*/
+/*Hamburguer menu closer shortcut.*/
 .hamburguer-menu-closer-shortcut {
     display: none;
 }
 
- /* JavaScrpit classes.*/
 
+ /*JavaScrpit classes.*/
 .active-hamburguer-menu {
     transform: translateX(0%);
     opacity: 1;

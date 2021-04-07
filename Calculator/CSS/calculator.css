@@ -1,5 +1,4 @@
- /* Calculator styles.*/
-
+ /*Calculator styles.*/
 .calculator-form {
     width: 85%;
     margin: 50px auto;
@@ -10,8 +9,7 @@
     max-width: 350px;
 }
 
- /* Calculator Display styles.*/
-
+ /*Calculator Display styles.*/
 .total-calculator-display {
     height: 70px;
     background-color: var(--calculator-display-color);
@@ -48,8 +46,7 @@
     color: var(--inner-contrast-color);
 }
 
- /* Calculator keys styles.*/
-
+ /*Calculator keys styles.*/
 .calculator-simbols {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -121,7 +118,7 @@
 }
 
 
- /* Calculator configurations styles.*/
+ /*Calculator configurations styles.*/
 .calculator-configurations {
     width:50%;
     max-width: 200px;
