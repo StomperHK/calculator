@@ -14,21 +14,6 @@
     let globalInputResultLength = 0
 
 
-    /* function maintainCursorPosition(selectionStart, displayContent) {
-        const amountOfDotsBeforeTheCursor = (displayContent.slice(0, selectionStart).match(/\./g) || '').length
-
-         if (globalAmountOfDotsBeforeTheCursor > amountOfDotsBeforeTheCursor) {
-             selectionStart -= selectionStart === 0 ? 0 : 1
-        }
-        if (amountOfDotsBeforeTheCursor !== globalAmountOfDotsBeforeTheCursor && amountOfDotsBeforeTheCursor) {
-            ++selectionStart
-            console.log(amountOfDotsBeforeTheCursor)
-        }
-        globalAmountOfDotsBeforeTheCursor = amountOfDotsBeforeTheCursor
-
-        calculatorResultDisplayEL.setSelectionRange(selectionStart, selectionStart)
-    } */
-
     function doFundamentalsVerifications() {
         const indexOfInfinitySymbol = calculatorResultDisplayEL.value.indexOf('∞')
         const indexOfErrorMessage = calculatorResultDisplayEL.value.indexOf('Erro')
@@ -92,28 +77,6 @@
     }
 
 
-    /* function separateNumericalPlacesWithDot(completeNumber) {
-        completeNumber =  completeNumber.replace(/\./g, '')
-
-        if (Number(completeNumber) === NaN) {
-            return completeNumber
-        }
-
-        let arrayOfNumbers = completeNumber.split('').reverse()        
-        let amountOfDots = 0
-        let arrayCopy = arrayOfNumbers.slice()
-
-
-        arrayOfNumbers.forEach((_number, numberIndex) => {
-            if (numberIndex % 3 === 0 && numberIndex != 0) {
-                arrayCopy.splice(numberIndex + amountOfDots, 0, '.')
-                ++amountOfDots
-            }
-        })
-
-        return arrayCopy.reverse().join('')
-    } */
-
     const separeteNumbersFromOperators = arrayOfCharacters => {
         let elementPosition = 0
 
@@ -150,25 +113,6 @@
             return innerStringWithCharacters
         })
     }
-
-    /* const verifyIfInnerElementsCanGetFormatedWithDot = arrayOfCharacters => {
-        return arrayOfCharacters.map(innerStringWithCharacters => {
-            innerStringWithCharacters = innerStringWithCharacters[0] == '0' && innerStringWithCharacters[1] != ',' ? 
-            String(Number(innerStringWithCharacters)) :
-            innerStringWithCharacters
-            
-            if (!simbols.includes(innerStringWithCharacters) && String(innerStringWithCharacters).includes(',')) {
-                const indexOfComma = innerStringWithCharacters.indexOf(',')
-
-                return separateNumericalPlacesWithDot(innerStringWithCharacters.split(',')[0])
-                    .concat(',', innerStringWithCharacters.slice(indexOfComma).replace(/\./g, '').replace(/,/g, ''))
-            } else if (!simbols.includes(innerStringWithCharacters)) {
-                return separateNumericalPlacesWithDot(innerStringWithCharacters)
-            }
-
-            return innerStringWithCharacters
-        })
-    } */
 
     const removeRepeatedOperators = arrayOfCharacters => {
         let thereIsASimbolBefore = false

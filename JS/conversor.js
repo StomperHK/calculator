@@ -1,5 +1,4 @@
 import {CreateCustomSelect} from "./custom-select.js"
-import {returnAPIKey} from "./apikey.js"
 
 
 (function() {
@@ -23,7 +22,7 @@ import {returnAPIKey} from "./apikey.js"
     let secondCurrency;
     
     let globalExchangeRate = {}
-    const APIKey = returnAPIKey() || ''
+    const APIKey = ''
 
     const getURL = currency => `https://v6.exchangerate-api.com/v6/${APIKey}/latest/${currency}`
     const errorDescription = errorType => ({
