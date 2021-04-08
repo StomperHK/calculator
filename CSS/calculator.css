@@ -1,12 +1,12 @@
  /*Calculator styles.*/
 .calculator-form {
-    width: 85%;
+    width: 80%;
     margin: 50px auto;
     border-radius: 10px;
     background-color: var(--main-contrast-color);
     overflow: hidden;
     border: 2px solid #909090;
-    max-width: 350px;
+    max-width: 375px;
 }
 
  /*Calculator Display styles.*/
@@ -120,8 +120,7 @@
 
  /*Calculator configurations styles.*/
 .calculator-configurations {
-    width:50%;
-    max-width: 200px;
+    width: 70%;
     border: 2px solid var(--inner-contrast-color);
     margin: 0px auto;
     border-radius: 8px;
@@ -153,6 +152,8 @@
     outline: none;
     padding: 2px;
     transition: border 0.1s ease;
+    -webkit-transition: border 0.1s ease;
+    -moz-transition: border 0.1s ease;
 }
 
 .calculator-configurations > input:focus {
@@ -178,4 +179,20 @@
 .full-border {
     border: none;
     border: 1px solid #D6D6D6;
+}
+
+
+
+@media (min-width: 750px) {
+    .calculator-simbols {
+        grid-auto-rows: 50px;
+    }
+
+    .calculator-numbers {
+        grid-auto-rows: 60px;
+    }
+
+    .delete-actions-container {
+        grid-auto-rows: 60px;
+    }
 }
