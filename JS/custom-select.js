@@ -77,7 +77,6 @@ export class CreateCustomSelect {
     
     addInputEvent() {
         this._filterBox.addEventListener('input', this.filterOptions.bind(this))
-        
         this.showFilterReseter(this._filterBox.value)
     }
     

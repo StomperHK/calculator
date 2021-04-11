@@ -19,15 +19,12 @@
     hamburguerMenuOpenerEL.addEventListener("click", () => {
         navigationBarEL.classList.add('active-hamburguer-menu')
 
-        hamburguerMenuCloserShortcutEL.classList.add('expand-menu-closer-shortcut')
-        hamburguerMenuCloserShortcutEL.style.display = 'block'
-        
         hamburguerMenuCloserShortcutEL.classList.add('opacity')
+        hamburguerMenuCloserShortcutEL.style.display = 'block'        
         hamburguerMenuCloserShortcutEL.style.pointerEvents = "auto"
 
         hamburguerMenuCloserShortcutEL.addEventListener('click', () => {
             navigationBarEL.classList.remove('active-hamburguer-menu')
-            
             hamburguerMenuCloserShortcutEL.classList.remove('opacity')
             hamburguerMenuCloserShortcutEL.style.pointerEvents = "none"            
         })
