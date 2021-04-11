@@ -149,15 +149,17 @@ import {CreateCustomSelect} from "./custom-select.js"
             }
         })
     }
-
     
+
     initFirstFetch('USD')
 
     
     function handleInput() {
         let keyboardValue = this.value.replace(/\./, ',')
+        let lastPositionOfCursor = currencyInputEL.selectionStart
         const firstIndexOfComma = keyboardValue.indexOf(',')
-        
+        const matchOfCommas = (keyboardValue.match(/\,/g) || '').length
+
         keyboardValue = keyboardValue.replace(/-/g, '')
         keyboardValue = keyboardValue.replace(/ /g, '')
         
@@ -165,14 +167,17 @@ import {CreateCustomSelect} from "./custom-select.js"
             keyboardValue = '0' + keyboardValue
         }
         
-        if ((keyboardValue.match(/\,/g) || '').length > 1) {
+        if (matchOfCommas > 1) {
             keyboardValue = [
                 keyboardValue.slice(0, firstIndexOfComma+1),
                 keyboardValue.slice(firstIndexOfComma).replace(/\,/g, '')
             ].join('')
+            --lastPositionOfCursor
         }
 
         this.value = keyboardValue
+        currencyInputEL.setSelectionRange(lastPositionOfCursor, lastPositionOfCursor)
+        
         updateConversionResult(false)
     }
     
@@ -185,7 +190,7 @@ import {CreateCustomSelect} from "./custom-select.js"
             arrayOfNumbers.pop()
         }
 
-        if (indexOfDot != -1) {
+        if (number % 1 !== 0) {
             if (arrayOfNumbers[indexOfDot+1] != '0') {
                 const placesAfterTheDot = arrayOfNumbers.slice(indexOfDot+1).length
 
@@ -211,8 +216,7 @@ import {CreateCustomSelect} from "./custom-select.js"
                 return arrayOfNumbers.slice(0, lastIndexOfZero + getAValidDecimalPlace()).join('')
             }
         }
-
-        return `${number}`
+        return String(number)
     }
     
     function updateConversionResult(updateEssentialConversion=true) {
@@ -223,7 +227,7 @@ import {CreateCustomSelect} from "./custom-select.js"
         const secondCurrencyValue = Number(globalExchangeRate[firstCurrency][secondCurrency])
         const finalResult = numberInputValue ? numberInputValue * secondCurrencyValue : 0
 
-        conversionResultEL.innerText = finalResult ? formatDecimalPlaces(finalResult) : ''
+        conversionResultEL.value = finalResult ? formatDecimalPlaces(finalResult) : ''
 
         if (updateEssentialConversion) {
             essentialConversionEL.innerHTML = `1 ${firstCurrency} <span>=</span> ${formatDecimalPlaces(secondCurrencyValue, 4)} ${secondCurrency}`
