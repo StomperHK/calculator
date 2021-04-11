@@ -85,7 +85,7 @@ main {
     margin: 25px auto 5px auto;
 }
 
-main > input {
+main > input:first-child {
     text-indent: 5px;
     width: 100%;
     height: 33px;
@@ -99,19 +99,21 @@ main > input {
     -moz-transition: border 0.1s ease;
 }
 
-main > input:focus {
+main > input:first-child:focus {
     border: 2px solid #535DD1;
 }
 
 main > .conversion-result {
     width: 80%;
-    padding-top: 5px;
+    display: block;
     margin-left: 20px;
+    outline: none;
     justify-self: center;
+    border: none;
     border-bottom: 2px solid var(--inner-contrast-color);
+    background-color: var(--main-contrast-color);
     color: var(--inner-contrast-color);
-    overflow: auto;
-    text-align: center; 
+    text-align: center;
 }
 
 main > section {
@@ -278,6 +280,10 @@ main .essential-currency-conversion span {
     margin-top: 5px;
 }
 
+.custom-select > div:first-child {
+    min-height: 32px;
+}
+
 .custom-select > div:nth-child(1),
 .custom-select > div:nth-child(2),
 .custom-select > div:nth-child(2) > div {
@@ -336,14 +342,35 @@ main .essential-currency-conversion span {
 
 
 
-@media (max-width: 538px) and (min-width: 513px) {
+@media (max-width: 538px) and (min-width: 518px) {
     .addtional-infos > div:first-child {
         height: 110px;
     }
 }
 
-@media (max-width: 382px) {
+@media (max-width: 388px) {
     .addtional-infos > div {
         grid-column: span 2;
+    }
+}
+
+@media (max-width: 185px) {
+    .addtional-infos .space-between-title-and-icon h2 {
+        order: 2;
+    }
+
+    .addtional-infos :is(.fas, .far) {
+        margin: 0px 0px 2px 0px;
+    }
+
+    .addtional-infos .space-between-title-and-icon {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+    }
+
+    .addtional-infos .far {
+        display: block;
     }
 }
