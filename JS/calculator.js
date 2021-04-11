@@ -10,14 +10,12 @@
     const maxAmountOfDecimalPlacesEL = document.querySelector('[data-js="max-decimal-places-quantity"]')
 
     const simbols = ["-", "+", "÷", "×", '*', '/']
-    let globalAmountOfDotsBeforeTheCursor = 0
     let globalInputResultLength = 0
 
 
     function doFundamentalsVerifications() {
-        const indexOfInfinitySymbol = calculatorResultDisplayEL.value.indexOf('∞')
-        const indexOfErrorMessage = calculatorResultDisplayEL.value.indexOf('Erro')
         let displayContent = calculatorResultDisplayEL.value
+        const indexOfInfinitySymbol = displayContent.indexOf('∞')
 
         if (indexOfInfinitySymbol !== -1) {
             displayContent = displayContent.split('')
@@ -25,16 +23,8 @@
             calculatorResultDisplayEL.value = displayContent.join('')
         }
 
-        if (indexOfErrorMessage !== -1) {
-            displayContent = displayContent.split('')
-            displayContent.splice(indexOfErrorMessage, 4)
-            calculatorResultDisplayEL.value = displayContent.join('')
-            calculatorEssentialExpressionEL.innerText = ''
-        }
-
         if (!displayContent) {
-            calculatorEssentialExpressionEL.innerText = ''
-            
+            calculatorEssentialExpressionEL.value = ''
         }
     }
 
@@ -42,14 +32,13 @@
         doFundamentalsVerifications()
 
         let lastPositionOfCursor = calculatorResultDisplayEL.selectionStart
-
         calculatorResultDisplayEL.value = formatDisplayInput(calculatorResultDisplayEL.value)
         calculatorResultDisplayEL.focus()
 
-        displayContent = calculatorResultDisplayEL.value
+        let displayContent = calculatorResultDisplayEL.value
 
-        if (displayContent.length === globalInputResultLength) {
-            --lastPositionOfCursor
+        if (displayContent.length === globalInputResultLength && displayContent.length !== 0 && displayContent.includes(',')) {
+            lastPositionOfCursor--
         }
         calculatorResultDisplayEL.setSelectionRange(lastPositionOfCursor, lastPositionOfCursor)
 
@@ -59,21 +48,20 @@
     const handleButtonClick = event => {
         doFundamentalsVerifications()
 
-        calculatorResultDisplayEL.focus()
-
         const contentOfClickedButton = event.target.innerText
-
-        let lastPositionOfCursor = calculatorResultDisplayEL.selectionStart
         let displayContent = calculatorResultDisplayEL.value
+        let lastPositionOfCursor = calculatorResultDisplayEL.selectionStart
         let slicedContent = [displayContent.slice(0, lastPositionOfCursor), displayContent.slice(lastPositionOfCursor)]
 
         calculatorResultDisplayEL.value = slicedContent.join(contentOfClickedButton.length === 1 ? contentOfClickedButton : '') // It need to be used, else the display can show a lot of values dependind of the user behaviour
         calculatorResultDisplayEL.value = formatDisplayInput(calculatorResultDisplayEL.value)
+        calculatorResultDisplayEL.focus()
 
-        if (displayContent.length === globalInputResultLength && displayContent.length !== 0) {
+        if (displayContent.length === globalInputResultLength && displayContent.length !== 0 && displayContent.includes(',')) {
             --lastPositionOfCursor
         }
-        calculatorResultDisplayEL.setSelectionRange(++lastPositionOfCursor, lastPositionOfCursor)   
+
+        calculatorResultDisplayEL.setSelectionRange(lastPositionOfCursor+1, lastPositionOfCursor+1)
     }
 
 
@@ -99,6 +87,19 @@
                 return accumulator
             }
         }, [''])
+    }
+
+    const removeLeandingZeros = (arrayOfCharacters) => {
+        return arrayOfCharacters.map((innerStringWithCharacters) => {
+            if (innerStringWithCharacters[0] == '0' && innerStringWithCharacters.length !== 1) {
+                innerStringWithCharacters = innerStringWithCharacters.split('')
+                innerStringWithCharacters.shift()
+                return innerStringWithCharacters.join('')
+            }
+            else {
+                return innerStringWithCharacters
+            }
+        })
     }
 
     const removeAddtionalCommas = arrayOfCharacters => {
@@ -148,7 +149,7 @@
             parsedExpression.pop()
         }
 
-        // parsedExpression = verifyIfInnerElementsCanGetFormatedWithDot(parsedExpression)
+        parsedExpression = removeLeandingZeros(parsedExpression)
         parsedExpression = removeAddtionalCommas(parsedExpression)
         parsedExpression = removeRepeatedOperators(parsedExpression)
         
@@ -208,7 +209,6 @@
     function displayExpressionResult(event) {
         event.preventDefault()
         
-        const lastExpressionValue = calculatorEssentialExpressionEL.innerText
         let calculatorContentAsArray = calculatorResultDisplayEL.value.split('')
         
         while (simbols.includes(calculatorContentAsArray[calculatorContentAsArray.length-1])) {
@@ -216,7 +216,7 @@
         }
         
         calculatorContentAsString = calculatorContentAsArray.join('')
-        calculatorEssentialExpressionEL.innerText = calculatorContentAsString
+        calculatorEssentialExpressionEL.value = calculatorContentAsString + (calculatorContentAsString ? ' =' : '')
         
         calculatorContentAsString = calculatorContentAsString.replace(/÷/g, "/").replace(/×/g, "*").replace(/\./g, '').replace(/,/g, '.')
         
@@ -228,8 +228,7 @@
             calculatorContentAsString = formatDecimalPlaces(eval(calculatorContentAsString), Number(maxAmountOfDecimalPlacesEL.value))
         }
         catch {
-            calculatorEssentialExpressionEL.value = calculatorContentAsString
-            calculatorResultDisplayEL.value = 'Erro'
+            calculatorResultDisplayEL.value = ''
             return
         }
         
@@ -242,37 +241,63 @@
 
 
     calculatorResultDisplayEL.addEventListener('input', handleCalculatorInput)
+
+    calculatorResultDisplayEL.addEventListener('keydown', (event) => {
+        if (event.key === 'Backspace') {
+            if (!calculatorResultDisplayEL.value) {
+                calculatorEssentialExpressionEL.value = ''
+            }
+        }
+    })
+
     displayableValuesELs.forEach(divElement => divElement.addEventListener('click', handleButtonClick))
     
     calculatorFormEL.addEventListener("submit", displayExpressionResult)
     
     displayPopperEL.addEventListener("click", () => {
-        calculatorResultDisplayEL.focus()
-
+        let offSetForEnd = 0
         let displayContent = calculatorResultDisplayEL.value.split('')
-        let lastPositionOfCursor = calculatorResultDisplayEL.selectionStart
+        let selectionStart = calculatorResultDisplayEL.selectionStart
+        let selectionEnd = calculatorResultDisplayEL.selectionEnd
         
-        displayContent.splice(lastPositionOfCursor-1, 1)
-        calculatorResultDisplayEL.value = displayContent.join('')
+        if (selectionStart !== 0 || selectionEnd !== 0) {
+            selectionStart -= selectionStart === selectionEnd ? 1 : 0       // returning one place to delete
+            displayContent.splice(selectionStart, selectionEnd-selectionStart) // removing selected numbers
+            calculatorResultDisplayEL.value = displayContent.join('')
 
-        doFundamentalsVerifications()
+            doFundamentalsVerifications()
+
+            selectionStart += selectionStart+1 === selectionEnd ? 1 : 0
+        }
+        else if (selectionStart + selectionEnd === 0) {
+            return undefined
+        }
+
+        if (selectionStart == selectionEnd) {   // if truth, it means it's needed to compesate deletion
+            offSetForEnd = 1
+        }
+        else {
+            offSetForEnd = 0
+        }
 
         calculatorResultDisplayEL.value = formatDisplayInput(calculatorResultDisplayEL.value)
-        calculatorResultDisplayEL.setSelectionRange(lastPositionOfCursor, --lastPositionOfCursor)
+        calculatorResultDisplayEL.setSelectionRange(selectionStart, selectionStart-offSetForEnd)
+        calculatorResultDisplayEL.focus()
+
+        globalInputResultLength = calculatorResultDisplayEL.value
     })
     
     displayContentReseterEL.addEventListener("click", () => {
+        calculatorEssentialExpressionEL.value = ""
         calculatorResultDisplayEL.value = ""
-        calculatorEssentialExpressionEL.innerText = ""
+        calculatorResultDisplayEL.focus()
     })
 
     maxAmountOfDecimalPlacesEL.addEventListener('input', () => {
         inputContent = maxAmountOfDecimalPlacesEL.value.replace(/\./, '').replace(/,/, '')
 
         if (Number(inputContent)) {
-            inputContent = inputContent
             maxAmountOfDecimalPlacesEL.value = inputContent
-
             sessionStorage.setItem('max-amount-of-decimal-places', inputContent)
         }
         else {
