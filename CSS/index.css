@@ -214,7 +214,7 @@ header > nav > ul > li a:hover {
     background-color: var(--active-color);
 }
 
-/*Hamburguer menu closer shortcut.*/
+ /*Hamburguer menu closer shortcut.*/
 .hamburguer-menu-closer-shortcut {
     background-color: rgb(46, 45, 44);
     position: absolute;
