@@ -19,7 +19,7 @@
 .custom-select > div:last-child {
     border: solid #000000;
     position: relative;
-    max-height: 110px;
+    max-height: 112px;
     margin-top: 4px;
     border-radius: 5px;
     position: absolute;
@@ -72,8 +72,6 @@
 .custom-select .custom-x-simbol > div:last-child {
     transform: rotate(-45deg)
 }
-
-
 
 .custom-select > div:last-child > span {
     display: block;
