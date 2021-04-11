@@ -45,7 +45,6 @@ header > h1 {
 
 header > .hamburguer-menu-opener {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 2px;
@@ -53,6 +52,10 @@ header > .hamburguer-menu-opener {
     width: 40px;
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
 }
 
 header > .hamburguer-menu-opener div {
