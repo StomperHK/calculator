@@ -3,6 +3,7 @@
     position: relative;
 }
 
+ /*Selected option contaiener styles.*/
 .custom-select > div:first-child {
     padding: 4px 6px;
     display: flex;
@@ -13,9 +14,15 @@
 }
 
 .custom-select .chevron {
+    margin-left: 4px;
     transition: transform 0.2s ease-in-out;
 }
 
+.custom-select .fa-chevron-down {
+    font-size: 14px;
+}
+
+ /*Options and input filter container styles.*/
 .custom-select > div:last-child {
     border: solid #000000;
     position: relative;
@@ -29,10 +36,8 @@
     transition: opacity 0.2s ease;
 }
 
-.custom-select .fa-chevron-down {
-    font-size: 14px;
-}
 
+ /*Input filter and custom-x-simbol wrapper styles.*/
 .custom-select > div:last-child > div {
     margin: 6px auto 4px auto;
     width: 90%;
@@ -44,13 +49,17 @@
     grid-template-columns: auto 19px;
     align-items: center;
     justify-items: center;
+    transition: border 0.1s ease;
+    -webkit-transition: border 0.1s ease;
+    -moz-transition: border 0.1s ease;
+    -ms-transition: border 0.1s ease;
 }
 
 .custom-select > div:last-child input {
     outline: none;
     width: 100%;
     height: 100%;
-    padding-left: 2px;
+    padding-left: 3px;
 }
 
 .custom-select .custom-x-simbol {
@@ -73,7 +82,9 @@
     transform: rotate(-45deg)
 }
 
-.custom-select > div:last-child > span {
+ /*All options styles.*/
+.custom-select > div:last-child > ul > li {
+    list-style: none;
     display: block;
     height: 24px;
     padding: 1px 0px 0px 8px;
@@ -81,16 +92,17 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    cursor: default;
 }
 
-.custom-select > div:last-child > span:active {
+.custom-select > div:last-child > ul > li:active {
     background-color: #D9F1EA;
 }
 
 
  /*JavaScript classes.*/
 .rotate-chevron {
-    transform: rotate(-180deg);
+    transform: rotate(180deg);
 }
 
 .disable-option-container {
