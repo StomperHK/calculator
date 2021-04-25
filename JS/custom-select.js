@@ -2,8 +2,8 @@ export class CreateCustomSelect {
     constructor(container, optionDisplayed=undefined) {
         this._clicks = 0
         this._optionFilter = optionDisplayed
-        
-        this._allElements = Array.from(document.querySelectorAll(`${container} span, ${container} div, ${container} input, ${container} i`))
+    
+        this._container = document.querySelector(container)
         this._firstDiv = document.querySelector(`${container} > div`)
         this._selectedOption = document.querySelector(`${container} > div > span`)
         this._selectChevron = document.querySelectorAll(`${container} > div > span`)[1]
@@ -11,14 +11,13 @@ export class CreateCustomSelect {
         this._allOptionsContainer = document.querySelector(`${container} > div:nth-child(2)`)
         this._filterBox = document.querySelector(`${container} > div:nth-child(2) input`)
         
-        this._allOptions = Array.from(document.querySelectorAll(`${container} > div:nth-child(2) > span`))
+        this._allOptions = Array.from(document.querySelectorAll(`${container} > div:nth-child(2) ul li`))
         
         this.initializeSelect()
     }
     
     initializeSelect () {
         this.setSelectValue()
-        this.setDataAttribute()
         this.addClickEvent()
         this.addInputEvent()
     }
@@ -31,13 +30,10 @@ export class CreateCustomSelect {
                 }
             }
         }
-        return this._allOptions[0] === undefined ?
-        '' :
-        this._selectedOption.innerText = this._allOptions[0].innerText
-    }
-    
-    setDataAttribute() {
-        this._allElements.forEach(element => element.setAttribute("data-js", "innerSelectElement"))
+
+        if (this._allOptions[0]) {
+            this._selectedOption.innerText = this._allOptions[0].innerText
+        }
     }
     
     addClickEvent() {
@@ -50,7 +46,7 @@ export class CreateCustomSelect {
     }
     
     verifyWhatWasClicked(event) {
-        if (event.target.getAttribute("data-js") != "innerSelectElement" && this._clicks == 1) {
+        if ( !(this._container.contains(event.target)) && this._clicks == 1) {
             this.addaptSelectOnClick()
         }
     }
@@ -64,7 +60,6 @@ export class CreateCustomSelect {
             case 0:
                 this._selectChevron.classList.add("rotate-chevron")
                 this._allOptionsContainer.classList.remove("disable-option-container")
-                this._filterBox.focus()
                 ++this._clicks
                 break
             case 1:
