@@ -117,7 +117,7 @@ import {CreateCustomSelect} from "./custom-select.js"
         globalExchangeRate[currency] = {...APIObject['conversion_rates']}
 
         const currencies = Object.keys(globalExchangeRate[currency])
-            .map(allCurrencies => `<span>${allCurrencies}</span>`)    // wrap the values with a span element.
+            .map(allCurrencies => `<li>${allCurrencies}</li>`)    // wrap the values with a span element.
             .join('')
         
         allOptionsContainerEL.forEach(container => fillContainerOptions(container, currencies))
