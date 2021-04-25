@@ -13,7 +13,6 @@
     background-color: var(--main-contrast-color);
     color: var(--inner-contrast-color);
     left: 50%;
-    box-shadow: 2px 2px 4px rgb(66, 66, 66);
     z-index: 3;
     transform: translate(-50%, -100%);
     -webkit-transform: translate(-50%, -100%);
@@ -258,6 +257,7 @@ main .essential-currency-conversion span {
     width: 80%;
     border: none;
     border-radius: 0px;
+    overflow-wrap: break-word;
     padding: 4px 4px 6px 4px;
     border-bottom: 2px solid var(--inner-contrast-color);
     grid-column: span 2;
@@ -369,7 +369,7 @@ main .essential-currency-conversion span {
     }
 }
 
-@media (max-width: 533px) {
+@media (max-width: 242px) {
     main > section {
         display: grid;
         grid-template-columns: 1fr;
@@ -380,8 +380,12 @@ main .essential-currency-conversion span {
         text-align: center;
     }
 
+    main > div:nth-child(2) {
+        text-align: center;
+    }
+
     main .fa-sync-alt {
-        display: inline;
+        display: inline-block;
     }
 
     .disable-option-container {
