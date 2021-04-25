@@ -33,7 +33,7 @@
                         <i class="far fa-moon"></i>
                     </div>
     
-                    <button class='hamburguer-menu-closer' data-js="hamburguer-menu-closer">
+                    <button class='hamburguer-menu-closer' title='fechar menu hambúguer' data-js="hamburguer-menu-closer">
                         <div></div>
                         <div></div>
                     </button>
@@ -44,11 +44,11 @@
                 </ul>
             </nav>
             
-            <div class="hamburguer-menu-opener" data-js="hamburguer-menu-opener">
+            <button class="hamburguer-menu-opener" title='abrir menu hambúrguer' data-js="hamburguer-menu-opener">
                 <div class="row"></div>
                 <div class="row"></div>
                 <div class="row"></div>
-            </div>
+            </button>
         </header>
         
         <div data-js="hamburguer-menu-closer-shortcut" class='hamburguer-menu-closer-shortcut'>
@@ -57,30 +57,38 @@
         
         
         <main>
-            <input type="text" inputmode="decimal" data-js="currency-input"/>
+            <input type="text" inputmode="decimal" data-js="currency-input" placeholder="moeda de entrada"/>
         
-            <input class="conversion-result" data-js="currency-result" readonly/>
+            <input class="conversion-result" data-js="currency-result" placeholder="resultado" readonly/>
             
             <section>
                 <div class="custom-select first-select">
                     <div> <span></span> <span class="chevron"><i class="fas fa-chevron-down"></i></span> </div>
-                    <div data-js="options-container" class="disable-option-container">
+                    <div class="disable-option-container">
                         <div> 
-                            <input type="text" class="filter-box" placeholder="search here"/> 
+                            <input type="text" class="filter-box" placeholder="filtre aqui"/> 
                             <div class="custom-x-simbol">  <div></div> <div></div>  </div>
                         </div>
+                        <ul data-js="options-container">
+
+                        </ul>
                     </div>
                 </div>
 
-                <i class="fas fa-sync-alt" data-js="fa-sync-alt"></i>
+                <div>
+                    <i class="fas fa-sync-alt" data-js="fa-sync-alt"></i>
+                </div>
                 
                 <div class="custom-select second-select">
                     <div> <span></span> <span class="chevron"><i class="fas fa-chevron-down"></i></span> </div>
-                    <div data-js="options-container" class="disable-option-container">
+                    <div class="disable-option-container">
                         <div> 
-                            <input type="text" class="filter-box" placeholder="search here"/> 
+                            <input type="text" class="filter-box" placeholder="filtre aqui"/> 
                             <div class="custom-x-simbol">  <div></div> <div></div>  </div> 
                         </div>
+                        <ul data-js="options-container">
+
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -142,7 +150,7 @@
                 Requisições feitas em 
                 <a href="https://www.exchangerate-api.com/" 
                 target="_blank" rel="external dofollow" hreflang="en-us">
-                    Exchangerate-api
+                    Exchangerate api
                 </a>
             </div>
         </section>
