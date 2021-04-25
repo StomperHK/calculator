@@ -91,7 +91,8 @@
 
     const removeLeandingZeros = (arrayOfCharacters) => {
         return arrayOfCharacters.map((innerStringWithCharacters) => {
-            if (innerStringWithCharacters[0] == '0' && innerStringWithCharacters.length !== 1) {
+            if (innerStringWithCharacters[0] == '0' && innerStringWithCharacters.length !== 1 &&
+            innerStringWithCharacters[1] !== ',') {
                 innerStringWithCharacters = innerStringWithCharacters.split('')
                 innerStringWithCharacters.shift()
                 return innerStringWithCharacters.join('')
@@ -149,8 +150,9 @@
             parsedExpression.pop()
         }
 
-        parsedExpression = removeLeandingZeros(parsedExpression)
+        
         parsedExpression = removeAddtionalCommas(parsedExpression)
+        parsedExpression = removeLeandingZeros(parsedExpression)
         parsedExpression = removeRepeatedOperators(parsedExpression)
         
         if (simbols.slice(1).includes(parsedExpression[0])) {
@@ -163,7 +165,7 @@
 
     function setBorderClassOnElements(Elements) {
         displayableValuesELs.slice(4).forEach((element, elementIndex) => {
-            if ('741,'.includes(element.innerText)) {
+            if ('741,C'.includes(element.innerText)) {
                 element.classList.add('border-left-removed')
             }
             else if ('963'.includes(element.innerText)) {
