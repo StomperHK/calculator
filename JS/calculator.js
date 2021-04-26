@@ -239,6 +239,7 @@
         }
         
         calculatorResultDisplayEL.value = formatDisplayInput(String(calculatorContentAsString).replace(".", ","))
+        calculatorResultDisplayEL.focus()
     }
 
 
